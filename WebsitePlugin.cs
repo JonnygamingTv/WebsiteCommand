@@ -64,7 +64,7 @@ namespace WebsiteCommand
 
         IEnumerator<WaitForSeconds> StartDelayedUrlRequest(UnturnedPlayer player)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(Configuration.Instance.JoinOpenUrlDelay);
             OpenUrl(player, Configuration.Instance.JoinUrl, Configuration.Instance.JoinDesc);
         }
     }
