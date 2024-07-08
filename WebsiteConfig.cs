@@ -10,6 +10,7 @@ namespace WebsiteCommand
     public class WebsiteConfig : IRocketPluginConfiguration
     {
         public bool OpenUrlOnJoin;
+        public float JoinOpenUrlDelay;
         public string JoinUrl;
         public string JoinDesc;
         [XmlArrayItem(ElementName = "WebsiteCommand")]
@@ -18,6 +19,7 @@ namespace WebsiteCommand
         public void LoadDefaults()
         {
             OpenUrlOnJoin = false;
+            JoinOpenUrlDelay = 1.5f;
             JoinUrl = "www.google.com";
             JoinDesc = "website:";
             WebsiteCommands = new List<WebsiteCommand> { new WebsiteCommand{CommandName = "default", Desc = "default", Help = "default", Url = "default"}};
