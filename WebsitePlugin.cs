@@ -23,7 +23,7 @@ namespace WebsiteCommand
         {
             Instance = this;
 
-            U.Events.OnPlayerConnected += Events_OnPlayerConnected;
+            if(Configuration.Instance.OpenUrlOnJoin) U.Events.OnPlayerConnected += Events_OnPlayerConnected;
 
             Logger.Log("WebsiteCommand has loaded!");
             if (Configuration != null && Configuration.Instance.WebsiteCommands.Count != 0)
@@ -40,7 +40,7 @@ namespace WebsiteCommand
         {
             Logger.Log("WebsiteCommand has Unloaded!");
 
-            U.Events.OnPlayerConnected -= Events_OnPlayerConnected;
+            if(Configuration.Instance.OpenUrlOnJoin) U.Events.OnPlayerConnected -= Events_OnPlayerConnected;
 
             foreach (var command in Configuration.Instance.WebsiteCommands)
             {
@@ -50,7 +50,7 @@ namespace WebsiteCommand
 
         void Events_OnPlayerConnected(UnturnedPlayer player)
         {
-            if (player != null && Configuration.Instance.OpenUrlOnJoin)
+            if (player != null)
             {
                 StartCoroutine(StartDelayedUrlRequest(player));
             }
